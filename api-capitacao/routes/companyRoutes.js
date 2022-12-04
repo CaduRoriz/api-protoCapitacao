@@ -51,14 +51,13 @@ router.get('/all', async (req,res) => { //acho que nem preciso desse metodo aqui
         const companies = await Company.find()
         
         companies.forEach(el => {
-            bairros.push(el.bairro)
+            bairros.push(el.cnae_fiscal)
             
         })
-
         
         bairros = [...new Set(bairros)]
 
-        res.status(200).json(companies)
+        res.status(200).json(bairros);
     } catch (error){
         res.status(500).json({error: error})
     }
